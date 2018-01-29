@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
+<body ng-controller='BaseController as vm'>
   <ul class="menu">
     <li><a href="#!/view1">view1</a></li>
     <li><a href="#!/view2">view2</a></li>
@@ -26,6 +26,7 @@
   <![endif]-->
 
   <div ng-view></div>
+  <div data-ui-view></div>
 
   <div>Angular seed app: v<span app-version></span></div>
 
@@ -43,5 +44,15 @@
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
+
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/angular-ui-router/release/stateEvents.min.js"></script>
+
+
+  <script src="core/base.controller.js"></script>
+
+  <script src="home-state/home.route.js"></script>
+  <script src="home-state/home.controller.js"></script>
+
 </body>
 </html>
