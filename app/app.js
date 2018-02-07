@@ -5,7 +5,8 @@ angular
     .module('myApp', [
       'ui.router',
       'ui.router.state.events',
-      'myApp.version'
+      'myApp.version',
+      'ngStorage'
 ])
     .config(['$urlRouterProvider', '$locationProvider',
         function($urlRouterProvider, $locationProvider) {
