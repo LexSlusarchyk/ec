@@ -1,11 +1,35 @@
 <h1 class="text-center">Home</h1>
-<div class="container-fluid">
-    <div class="text-center">
-        <img src="content/images/fred.jpg" class="img-circle" style="width: 25%; height: auto;" alt="fred">
 
+
+<button class="btn btn-default"
+        data-ng-click="vm.openAddBaseCityModal()"
+>Add city</button>
+
+<div class="container">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-6">
+        <h2>Places To Visit</h2>
+        <br>
+        <table class="table cityTable">
+            <thead>
+            <tr>
+                <th>City</th>
+                <th>Temperature <sup>&deg</sup></th>
+                <th>Weather condition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="capital in vm.capitalsService.data track by $index">
+                <td data-ng-click="vm.capitalsService.remove(capital)">{{capital.title}}</td>
+                <td>0<sup>&deg</sup></td>
+                <td>Sunny</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <ol>
-        <li ng-repeat="capital in vm.capitals">{{capital.title}}</li>
-    </ol>
+
+    <div class="col-md-2"></div>
 
 </div>

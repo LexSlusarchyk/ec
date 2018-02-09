@@ -3,14 +3,13 @@
 
     angular
         .module('myApp')
-        .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+        .config(['$stateProvider', function($stateProvider) {
             $stateProvider
                 .state('home', {
                     url:'/',
                     templateUrl: 'home-state/home.view.html',
                     controller: 'HomeController',
-                    controllerAs: 'vm',
-                    needAuth: true
+                    controllerAs: 'vm'
                 })
         }])
 })();

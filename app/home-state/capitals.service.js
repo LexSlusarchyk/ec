@@ -13,28 +13,16 @@
         var service = {
             data: null,
             add: add,
-            get: get,
             getAll: getAll,
+            remove: remove,
             reset: reset
         };
 
         return service;
 
-        function add(inst) {
-            var defered = $q.defer();
-
-            $http.post(apiUrl +  '/api/institutions', inst).then(function(data){
-                defered.resolve(data);
-            });
-            return defered.promise;
-        }
-
-        function get(instId){
-            var defered = $q.defer();
-            $http.get(apiUrl +  '/institutions/' + instId).then(function(data){
-                defered.resolve(data);
-            });
-            return defered.promise;
+        function add(city) {
+            service.data.push(city);
+            updateStorage();
         }
 
         function getAll() {
@@ -45,7 +33,7 @@
                 defered.resolve(service.data);
             } else {
                 $http.get('content/capitals.json').then(function(response){
-                    service.data = response.data;
+                    service.data = formatCapitalsData(response.data.capitals);
                     $localStorage.capitals = service.data;
                     defered.resolve(service.data);
                 });
@@ -54,11 +42,39 @@
             return defered.promise;
         }
 
+
+
+        function formatCapitalsData(capitalsList) {
+            var capitals = [];
+
+            for (var i = 0; i < capitalsList.length; i++) {
+                var item = {
+                    title: capitalsList[i],
+                    visited: false
+                };
+
+                capitals.push(item);
+            }
+
+            return capitals;
+        }
+
         function reset() {
             $http.get(apiUrl +  '/institutions').then(function(response){
                 service.data = response.data;
                 $localStorage.capitals = service.data;
             });
+        }
+
+
+        function remove(item) {                     //delete city from list
+            var index = service.data.indexOf(item);
+            service.data.splice(index, 1);
+            updateStorage();
+        }
+
+        function updateStorage() {                //update list in storage
+            $localStorage.capitals = service.data;
         }
 
     }

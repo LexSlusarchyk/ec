@@ -5,7 +5,7 @@ angular
     .module('myApp', [
       'ui.router',
       'ui.router.state.events',
-      'myApp.version',
+      'ui.bootstrap',
       'ngStorage'
 ])
     .config(['$urlRouterProvider', '$locationProvider',

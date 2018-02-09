@@ -4,30 +4,30 @@
         .module('myApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['capitalsService'];
+    HomeController.$inject = ['capitalsService', 'modalService'];
 
-    function HomeController(capitalsService) {
+    function HomeController(capitalsService, modalService) {
         var vm = this;
+
+        vm.capitalsService = capitalsService;
+        vm.openAddBaseCityModal = openAddBaseCityModal;
 
         getCapitals();
 
         function getCapitals() {
+
             capitalsService.getAll().then(function(response) {
-                console.log(response);
 
-                vm.capitals = [];
+                vm.capitals = response.capitals;
 
-
-                        for (var i =0; i < response.capitals.length; i++) {
-
-                            vm.capitals.push(response.capitals[i]);
-
-                        }
-
-
-                console.log(vm.capitals);
+                console.log(vm.capitalsService.data);
 
             });
+        }
+
+
+        function openAddBaseCityModal() {
+            modalService.showAddCityModal();
         }
 
 
