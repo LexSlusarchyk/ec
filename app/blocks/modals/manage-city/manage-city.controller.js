@@ -12,7 +12,13 @@
         var vm = this;
 
         vm.submit = submit;
-        vm.city = {};
+        vm.city = {
+            status: {
+                neutral: true,
+                visited: false,
+                going_to_visit: false
+            }
+        };
 
         activate();
 
