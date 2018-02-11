@@ -11,6 +11,22 @@
 
         vm.capitalsService = capitalsService;
         vm.openAddBaseCityModal = openAddBaseCityModal;
+        vm.myFilter = myFilter;
+
+        vm.filterOptions = [
+            {
+                title: 'Visited',
+                key: 'visited'
+            },
+            {
+                title: 'Neutral',
+                key: 'neutral'
+            },
+            {
+                title: 'Planning to visit',
+                key: 'going_to_visit'
+            }
+        ];
 
         getCapitals();
 
@@ -18,7 +34,7 @@
 
             capitalsService.getAll().then(function(response) {
 
-                vm.capitals = response.capitals;
+                vm.capitals = response.capitals;       //Непотрібний ????
 
                 console.log(vm.capitalsService.data);
                 console.log(vm.capitalsService);
@@ -42,6 +58,15 @@
                 };
             }
         };
+
+
+        function myFilter(actual) {
+            if (!vm.activeFilter) { return true }
+
+            return actual.status[vm.activeFilter];
+        }
+
+
 
     }
 })();

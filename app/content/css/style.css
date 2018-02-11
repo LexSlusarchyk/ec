@@ -6,3 +6,8 @@
 .going_to_visit {
     background-color: purple;
 }
+
+.filters > div {
+    display: inline;
+    padding: 10px;
+}

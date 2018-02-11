@@ -1,6 +1,7 @@
-<h1 class="text-center">Home</h1>
 
 <div class="container">
+
+
 
     <div class="col-md-3">
         <button class="btn btn-default"
@@ -11,6 +12,17 @@
     <div class="col-md-6">
         <h2>Places To Visit</h2>
         <br>
+
+        <div class="filters">
+            <div class="radio-option" data-ng-repeat="option in vm.filterOptions">
+                <label>
+                    <span data-ng-bind="option.title"></span>
+                    <input type="radio" data-ng-model="vm.activeFilter" data-ng-value="option.key">
+                </label>
+            </div>
+        </div>
+        <br>
+
         <table class="table cityTable">
             <thead>
             <tr>
@@ -21,7 +33,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="capital in vm.capitalsService.data track by $index" data-ng-class="vm.getClass(capital)">
+            <tr ng-repeat="capital in vm.capitalsService.data | filter : vm.myFilter track by $index" data-ng-class="vm.getClass(capital)">
                 <td>
                     {{capital.title}}
                 </td>
@@ -37,6 +49,10 @@
                     <button class="btn btn-default"
                             data-ng-click="vm.capitalsService.changeStatus(capital, 2)"
                     >going to</button>
+
+                    <button class="btn btn-default"
+                            data-ng-click="vm.capitalsService.getWeather(capital)"
+                    >get weather</button>
                 </td>
             </tr>
             </tbody>

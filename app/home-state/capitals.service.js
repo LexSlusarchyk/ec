@@ -16,6 +16,7 @@
             getAll: getAll,
             remove: remove,
             changeStatus: changeStatus,
+            getWeather: getWeather,
             reset: reset
 
         };
@@ -94,7 +95,7 @@
         function changeStatus(item, status) {
             var index = service.data.indexOf(item);
 
-            if (status == 1){
+            if (status === 1){
                 service.data[index].status.visited = true;
                 service.data[index].status.neutral = false;
                 service.data[index].status.going_to_visit = false;
@@ -109,6 +110,22 @@
         }
 
 
+        function getWeather(city) {
+            var defered = $q.defer();
+            var apiUrl = 'api.openweathermap.org/data/2.5/weather?q=';
+            var apiKey = '&APPID=7085df341a386f5108600db1a628c50e';
+
+            $http.jsonp(apiUrl + city.title + apiKey).then(function(response){
+                $localStorage.weather = response;
+
+                console.log(response);
+                defered.resolve($localStorage.weather);
+            });
+
+            return defered.promise;
+
+
+        }
 
 
     }
