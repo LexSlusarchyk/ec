@@ -1,29 +1,34 @@
 
+<ul class="cb-slideshow">
+    <li><span></span></li>
+    <li><span></span></li>
+    <li><span></span></li>
+    <li><span></span></li>
+    <li><span></span></li>
+    <li><span></span></li>
+</ul>
 <div class="container">
 
-
-
-    <div class="col-md-3">
+    <div class="col-md-2 addCity">
         <button class="btn btn-default"
                 data-ng-click="vm.openAddBaseCityModal()"
         >Add city</button>
     </div>
 
-    <div class="col-md-6">
-        <h2>Places To Visit</h2>
-        <br>
-
+    <div class="col-md-8 cityList">
+        <h1 class="text-center">Places To Visit</h1>
+        <hr>
         <div class="filters">
-            <div class="radio-option" data-ng-repeat="option in vm.filterOptions">
+            <div class="radio" data-ng-repeat="option in vm.filterOptions">
                 <label>
                     <span data-ng-bind="option.title"></span>
-                    <input type="radio" data-ng-model="vm.activeFilter" data-ng-value="option.key">
+                    <input id="filterInput" type="radio" data-ng-model="vm.activeFilter" data-ng-value="option.key">
                 </label>
             </div>
         </div>
-        <br>
+        <hr>
 
-        <table class="table cityTable">
+        <table class="table">
             <thead>
             <tr>
                 <th>City</th>
@@ -33,38 +38,36 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="capital in vm.capitalsService.data | filter : vm.myFilter track by $index" data-ng-class="vm.getClass(capital)">
+            <tr ng-repeat="capital in vm.capitals.data | filter : vm.myFilter track by $index"
+                data-ng-class="{
+                    'visited': capital.visited,
+                    'planning-to-visit': capital.going_to_visit
+                }">
                 <td>
                     {{capital.title}}
                 </td>
-                <td>0<sup>&deg</sup></td>
-                <td>Sunny</td>
                 <td>
-                    <button type="button" class="close" data-ng-click="vm.capitalsService.remove(capital)"><span>&times;</span></button>
+                    {{capital.weather.main.temp}} <sup>&deg</sup>F
+                </td>
+                <td>{{capital.weather.weather[0].description}}</td>
+                <td>
+                    <button id="buttonVisit"
+                            class="btn btn-md"
+                            data-ng-click="capital.toggleVisited()"
+                    ><span>&#10004;</span></button>
+                    <button id="buttonVisit" class="btn btn-md" data-ng-click="vm.capitalsService.changeStatus(capital, 2)"><span>&#9992;</span></button>
+                    <button id="buttonVisit" class="btn btn-md" data-ng-click="vm.capitalsService.remove(capital)"><span>&#10008;</span></button>
 
-                    <button class="btn btn-default"
-                            data-ng-click="vm.capitalsService.changeStatus(capital, 1)"
-                    >Visited</button>
-
-                    <button class="btn btn-default"
-                            data-ng-click="vm.capitalsService.changeStatus(capital, 2)"
-                    >going to</button>
-
-                    <button class="btn btn-default"
-                            data-ng-click="vm.capitalsService.getWeather(capital)"
-                    >get weather</button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <div class="col-md-3">
-        <div class="col-md-2">
-            <button class="btn btn-default"
-                    data-ng-click="vm.capitalsService.reset()"
-            >Reset city list</button>
-        </div>
+    <div class="col-md-2">
+        <button class="btn btn-default"
+                data-ng-click="vm.capitalsService.reset()"
+        >Reset city list</button>
     </div>
 
 </div>

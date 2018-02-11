@@ -6,9 +6,9 @@
         .controller('ManageCityModalController', ManageCityModalController);
 
 
-    ManageCityModalController.$inject = ['capitalsService', '$uibModalStack'];
+    ManageCityModalController.$inject = ['$uibModalStack', 'capitalsService'];
 
-    function ManageCityModalController(capitalsService, $uibModalStack) {
+    function ManageCityModalController($uibModalStack, capitalsService) {
         var vm = this;
 
         vm.submit = submit;
@@ -17,17 +17,13 @@
                 neutral: true,
                 visited: false,
                 going_to_visit: false
-            }
+            },
+            weather: null
         };
 
-        activate();
-
-        function activate() {
-
-        }
 
         function submit() {
-            capitalsService.add(vm.city);
+            capitalsService.data.add(vm.city);
             $uibModalStack.dismissAll();
         }
     }
