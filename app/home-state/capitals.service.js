@@ -13,7 +13,8 @@
         var service = {
             data: new CapitalsList(),
             reset: reset,
-            remove: remove
+            remove: remove,
+            update: update
         };
 
         init();
@@ -24,17 +25,18 @@
             service.data.getList();
         }
 
-
-
         function reset() {                                              // reset city list to default
             service.data.reset();
         }
-
 
         function remove(item) {                     //delete city from list
             var index = service.data.indexOf(item);
             service.data.splice(index, 1);
             updateStorage();
+        }
+
+        function update(){
+            service.data.updateStorage();
         }
 
 

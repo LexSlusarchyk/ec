@@ -38,25 +38,39 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="capital in vm.capitals.data | filter : vm.myFilter track by $index"
+            <tr ng-repeat="capital in vm.capitals.data | orderBy:'weather.main.temp' | filter : vm.myFilter  track by $index"
                 data-ng-class="{
                     'visited': capital.visited,
-                    'planning-to-visit': capital.going_to_visit
+                    'going_to_visit': capital.going_to_visit
                 }">
-                <td>
+                <td id="align">
                     {{capital.title}}
                 </td>
                 <td>
                     {{capital.weather.main.temp}} <sup>&deg</sup>F
                 </td>
-                <td>{{capital.weather.weather[0].description}}</td>
+                <td>
+                    {{capital.weather.weather[0].description}}
+                    <img ng-src="http://openweathermap.org/img/w/{{capital.weather.weather[0].icon}}.png" alt='Icon depicting current weather.'>
+                </td>
                 <td>
                     <button id="buttonVisit"
                             class="btn btn-md"
-                            data-ng-click="capital.toggleVisited()"
+                            data-ng-click="capital.toggleVisited();vm.capitalsService.update()"
+                            data-toggle="tooltip" title="Visited!"
                     ><span>&#10004;</span></button>
-                    <button id="buttonVisit" class="btn btn-md" data-ng-click="vm.capitalsService.changeStatus(capital, 2)"><span>&#9992;</span></button>
-                    <button id="buttonVisit" class="btn btn-md" data-ng-click="vm.capitalsService.remove(capital)"><span>&#10008;</span></button>
+
+                    <button id="buttonVisit"
+                            class="btn btn-md"
+                            data-ng-click="capital.togglePlanningToVisit()"
+                            data-toggle="tooltip" title="PlanningToVisit"
+                    ><span>&#9992;</span></button>
+
+                    <button id="buttonVisit"
+                            class="btn btn-md"
+                            data-ng-click="vm.capitalsService.data.remove(capital)"
+                            data-toggle="tooltip" title="Delete from list"
+                    ><span>&#10008;</span></button>
 
                 </td>
             </tr>

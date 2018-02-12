@@ -12,14 +12,7 @@
         var vm = this;
 
         vm.submit = submit;
-        vm.city = {
-            status: {
-                neutral: true,
-                visited: false,
-                going_to_visit: false
-            },
-            weather: null
-        };
+        vm.city = {};
 
 
         function submit() {

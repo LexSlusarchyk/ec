@@ -47,9 +47,29 @@ hr {
     padding: 0;
 }
 
+table {
+    margin-bottom: 0 !important;
+}
+
+table tbody tr:first-child {
+    background-color: blue;
+    color: white;
+    width: 100%;
+}
+
+table tbody tr:last-child {
+    background-color: red;
+    color: white;
+}
+
 table td {
     font-weight: bold;
 }
+
+table tr td:nth-child(1), table tr td:nth-child(2) {
+    padding-top: 18px;
+}
+
 
 table td:last-child {
     text-align: right;

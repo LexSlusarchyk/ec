@@ -14,7 +14,7 @@
         vm.openAddBaseCityModal = openAddBaseCityModal;
         vm.myFilter = myFilter;
 
-        vm.filterOptions = [
+        vm.filterOptions = [                        //option for myFilter
             {
                 title: 'Neutral',
                 key: 'neutral'
@@ -30,12 +30,12 @@
         ];
 
 
-        function openAddBaseCityModal() {
+        function openAddBaseCityModal() {           //open manage-city modal
             modalService.showAddCityModal();
         }
 
 
-        function myFilter(actual) {
+        function myFilter(actual) {                     // filter city in list togle css class
             if (!vm.activeFilter) { return true }
 
             return actual[vm.activeFilter];

@@ -33,7 +33,7 @@
 
         Capital.prototype.getWeather = function() {
             var apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
-            var apiKey = '&APPID=7085df341a386f5108600db1a628c50e';
+            var apiKey = '&units=imperial&APPID=7085df341a386f5108600db1a628c50e';
             var _this = this;
 
             $http.get(apiUrl + this.title + apiKey).then(function(response){
@@ -52,6 +52,10 @@
 
         Capital.prototype.togglePlanningToVisit = function () {
             this.going_to_visit = !this.going_to_visit;
+
+            if (this.going_to_visit) {
+                this.visited = false;
+            }
         };
 
 

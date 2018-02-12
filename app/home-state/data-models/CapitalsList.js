@@ -44,12 +44,6 @@
 
         };
 
-        CapitalsList.prototype.formatCapitalParams = function(title) {
-            return {
-                title: title
-            };
-        };
-
         CapitalsList.prototype.addSilently = function(options) {
             if (!_.isObject(options)) {
                 options = {
@@ -77,6 +71,7 @@
             var _this = this;
 
             $http.get('content/capitals.json').then(function(response){
+                _this.data = [];                                            // Clear list before reset data
                 _this.addList(response.data.capitals);
                 $localStorage.capitals = _this.data;
                 defered.resolve(_this.data);
