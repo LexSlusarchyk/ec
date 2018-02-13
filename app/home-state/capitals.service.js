@@ -5,16 +5,16 @@
         .module('myApp')
         .factory('capitalsService', capitalsService);
 
-    capitalsService.$inject = ['$q', '$http', '$localStorage', 'CapitalsList'];
+    capitalsService.$inject = ['CapitalsList'];
     /* @ngInject */
-    function capitalsService($q, $http, $localStorage, CapitalsList) {
+    function capitalsService(CapitalsList) {
 
 
         var service = {
             data: new CapitalsList(),
             reset: reset,
             remove: remove,
-            update: update
+            updateStorage: updateStorage
         };
 
         init();
@@ -25,19 +25,18 @@
             service.data.getList();
         }
 
-        function reset() {                                              // reset city list to default
+        function reset() {         // reset city list to default
             service.data.reset();
         }
 
-        function remove(item) {                     //delete city from list
-            var index = service.data.indexOf(item);
-            service.data.splice(index, 1);
-            updateStorage();
+        function remove(item) {
+            service.data.remove(item);
         }
 
-        function update(){
+        function updateStorage(){
             service.data.updateStorage();
         }
+
 
 
     }

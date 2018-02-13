@@ -9,20 +9,20 @@
 </ul>
 <div class="container">
 
-    <div class="col-md-2 addCity">
+    <div class="col-md-2 add-city">
         <button class="btn btn-default"
                 data-ng-click="vm.openAddBaseCityModal()"
         >Add city</button>
     </div>
 
-    <div class="col-md-8 cityList">
+    <div class="col-md-8 city-list">
         <h1 class="text-center">Places To Visit</h1>
         <hr>
         <div class="filters">
             <div class="radio" data-ng-repeat="option in vm.filterOptions">
                 <label>
+                    <input id="filter-input" type="radio" data-ng-model="vm.activeFilter" data-ng-value="option.key">
                     <span data-ng-bind="option.title"></span>
-                    <input id="filterInput" type="radio" data-ng-model="vm.activeFilter" data-ng-value="option.key">
                 </label>
             </div>
         </div>
@@ -33,13 +33,14 @@
             <tr>
                 <th>City</th>
                 <th>Temperature <sup>&deg</sup></th>
-                <th>Weather condition</th>
+                <th>Weather</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="capital in vm.capitals.data | orderBy:'weather.main.temp' | filter : vm.myFilter  track by $index"
                 data-ng-class="{
+                    'neutral': capital.neutral,
                     'visited': capital.visited,
                     'going_to_visit': capital.going_to_visit
                 }">
@@ -50,28 +51,32 @@
                     {{capital.weather.main.temp}} <sup>&deg</sup>F
                 </td>
                 <td>
-                    {{capital.weather.weather[0].description}}
-                    <img ng-src="http://openweathermap.org/img/w/{{capital.weather.weather[0].icon}}.png" alt='Icon depicting current weather.'>
+                    <img ng-src="http://openweathermap.org/img/w/{{capital.weather.weather[0].icon}}.png"
+                         data-ng-attr-title="{{ capital.weather.weather[0].description }}"
+                    >
                 </td>
                 <td>
-                    <button id="buttonVisit"
-                            class="btn btn-md"
-                            data-ng-click="capital.toggleVisited();vm.capitalsService.update()"
+                    <button id="button-stutus"
+                            type="button"
+                            class="btn btn-link"
+                            data-ng-click="capital.toggleVisited();"
                             data-toggle="tooltip" title="Visited!"
-                    ><span>&#10004;</span></button>
+                    ><i class="far fa-check-circle"></i></button>
 
-                    <button id="buttonVisit"
-                            class="btn btn-md"
+                    <button id="button-stutus"
+                            type="button"
+                            class="btn btn-link"
                             data-ng-click="capital.togglePlanningToVisit()"
+                            data-ng-if="!capital.going_to_visit"
                             data-toggle="tooltip" title="PlanningToVisit"
-                    ><span>&#9992;</span></button>
+                    ><i class="far fa-list-alt"></i></button>
 
-                    <button id="buttonVisit"
-                            class="btn btn-md"
+                    <button id="button-stutus"
+                            type="button"
+                            class="btn btn-link"
                             data-ng-click="vm.capitalsService.data.remove(capital)"
                             data-toggle="tooltip" title="Delete from list"
-                    ><span>&#10008;</span></button>
-
+                    ><i class="far fa-times-circle"></i></button>
                 </td>
             </tr>
             </tbody>
@@ -85,3 +90,6 @@
     </div>
 
 </div>
+
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>

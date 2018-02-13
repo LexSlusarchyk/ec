@@ -4,9 +4,9 @@
         .module('myApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['capitalsService', 'modalService', 'CapitalsList'];
+    HomeController.$inject = ['$rootScope', 'capitalsService', 'modalService'];
 
-    function HomeController(capitalsService, modalService, CapitalsList) {
+    function HomeController($rootScope, capitalsService, modalService) {
         var vm = this;
 
         vm.capitalsService = capitalsService;
@@ -29,17 +29,24 @@
             }
         ];
 
+        activate();
+
+        function activate() {
+            $rootScope.$on('capital-updated', function() {
+                vm.capitalsService.updateStorage();
+            });
+        }
 
         function openAddBaseCityModal() {           //open manage-city modal
             modalService.showAddCityModal();
         }
-
 
         function myFilter(actual) {                     // filter city in list togle css class
             if (!vm.activeFilter) { return true }
 
             return actual[vm.activeFilter];
         }
+
 
 
 

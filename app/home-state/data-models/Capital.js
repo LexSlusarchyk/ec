@@ -5,9 +5,9 @@
         .module('myApp')
         .factory('Capital', capital);
 
-    capital.$inject = ['$http'];
+    capital.$inject = ['$http', '$rootScope'];
     /* @ngInject */
-    function capital($http) {
+    function capital($http, $rootScope) {
 
         function Capital(params) {
             this.title = '';
@@ -38,7 +38,6 @@
 
             $http.get(apiUrl + this.title + apiKey).then(function(response){
                 _this.weather = response.data;
-                console.log(response.data);
             });
         };
 
@@ -47,7 +46,10 @@
 
             if (this.visited) {
                 this.going_to_visit = false;
+                this.neutral = false;
             }
+
+            $rootScope.$emit('capital-updated');
         };
 
         Capital.prototype.togglePlanningToVisit = function () {
@@ -56,8 +58,9 @@
             if (this.going_to_visit) {
                 this.visited = false;
             }
-        };
 
+            $rootScope.$emit('capital-updated');
+        };
 
         return Capital;
     }

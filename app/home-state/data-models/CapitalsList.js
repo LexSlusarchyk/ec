@@ -69,12 +69,11 @@
 
         CapitalsList.prototype.reset = function() {
             var _this = this;
+            this.data.length = 0;
 
             $http.get('content/capitals.json').then(function(response){
-                _this.data = [];                                            // Clear list before reset data
                 _this.addList(response.data.capitals);
                 $localStorage.capitals = _this.data;
-                defered.resolve(_this.data);
             });
         };
 
