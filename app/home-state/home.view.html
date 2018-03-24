@@ -1,1 +1,8 @@
 <h1>Home</h1>
+
+<div ng-repeat="user in vm.users track by $index">
+    <p>{{user.name}} - {{user.role}}</p>
+</div>
+
+
+<h1>{{vm.user.name}}</h1>

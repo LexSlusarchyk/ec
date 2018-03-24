@@ -4,9 +4,9 @@
         .module('myApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$rootScope', 'capitalsService', 'modalService'];
+    HomeController.$inject = ['$rootScope', 'capitalsService', 'modalService', 'users'];
 
-    function HomeController($rootScope, capitalsService, modalService) {
+    function HomeController($rootScope, capitalsService, modalService, users) {
         var vm = this;
 
         vm.capitalsService = capitalsService;
@@ -52,7 +52,15 @@
         }
 
 
+        users.getAll().then(function (data) {
+            vm.users = data.data;
+            console.log(vm.users);
+        })
 
+        users.get(1).then(function (data) {
+            vm.user = data.data;
+            console.log(vm.user);
+        })
 
     }
 })();
