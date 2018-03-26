@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('myApp')
+        .module('app')
         .directive('ecoHeader', ecoHeader);
 
     ecoHeader.$inject = [];

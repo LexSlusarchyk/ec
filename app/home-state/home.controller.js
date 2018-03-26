@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular
-        .module('myApp')
+        .module('app')
         .controller('HomeController', HomeController);
 
     HomeController.$inject = ['$rootScope', 'modalService', 'users'];
@@ -21,12 +21,12 @@
         users.getAll().then(function (data) {
             vm.users = data.data;
             console.log(vm.users);
-        })
+        });
 
         users.get(1).then(function (data) {
             vm.user = data.data;
             console.log(vm.user);
-        })
+        });
 
     }
 })();

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('myApp')
+        .module('app')
         .factory('modalService', modalService);
 
     modalService.$inject = ['$uibModal'];

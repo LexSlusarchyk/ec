@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('myApp')
+        .module('app')
         .factory('global', global);
 
     global.$inject = [];

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('myApp')
+        .module('app')
         .directive('footer', footer);
 
     footer.$inject = [];

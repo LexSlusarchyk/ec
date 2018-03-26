@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('myApp')
+        .module('app')
         .controller('AboutController', AboutController);
 
     AboutController.$inject = [];

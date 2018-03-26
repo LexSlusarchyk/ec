@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .factory('users', users);
+        .factory('news', news);
 
-    users.$inject = ['$q', '$http', 'global'];
+    news.$inject = ['$q', '$http', 'global'];
     /* @ngInject */
-    function users($q, $http, global) {
+    function news($q, $http, global) {
 
         var apiUrl = global.apiUrl;
 
@@ -17,7 +17,7 @@
             getLastN: getLastN,
             getAll: getAll,
             update: update,
-            remove: remove
+            remove: remove,
         };
 
         return service;
@@ -33,15 +33,15 @@
 
         function get(id){
             var defered = $q.defer();
-            $http.get(apiUrl +  '/user/' + id).then(function(data){
+            $http.get(apiUrl +  '/news/' + id).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;
         }
 
-        function getAll() {
+        function getAll(params) {
             var defered = $q.defer();
-            $http.get(apiUrl + '/user').then(function(data){
+            $http.post(apiUrl +  '/news', params).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;
