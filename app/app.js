@@ -11,7 +11,8 @@ angular
     .config(['$urlRouterProvider', '$locationProvider', '$sceDelegateProvider', '$compileProvider',
         function($urlRouterProvider, $locationProvider, $sceDelegateProvider, $compileProvider) {
             $locationProvider.html5Mode(true);
-
+            $urlRouterProvider.otherwise("login");
+            $compileProvider.preAssignBindingsEnabled(true);
 
             $sceDelegateProvider.resourceUrlWhitelist([   //White list for wether api
                 // Allow same origin resource loads.

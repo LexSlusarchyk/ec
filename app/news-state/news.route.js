@@ -9,11 +9,7 @@
                     url:'/news',
                     templateUrl: 'news-state/news.view.html',
                     controller: 'NewsController',
-                    controllerAs: 'vm',
-                    permissions: {
-                        only: 'abstractState'
-                    },
-                    redirectTo: ['news.news-list']
+                    controllerAs: 'vm'
                 })
         }])
 })();
