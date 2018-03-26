@@ -4,9 +4,10 @@
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
+  <base href="/">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Places To Visit</title>
+  <title>Eco</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
@@ -27,15 +28,15 @@
 
   <!--<a ui-sref="home">Home</a>-->
 
-
-  <div data-ui-view></div>
-
+  <div ng-include="'layout/shell.html'"></div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script src="bower_components/underscore/underscore-min.js"></script>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/ngstorage/ngStorage.min.js"></script>
@@ -51,8 +52,6 @@
   <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-
   <script src="core/base.controller.js"></script>
   <script src="core/users.service.js"></script>
   <script src="core/global.service.js"></script>
@@ -62,16 +61,20 @@
   <script src="blocks/modals/manage-city/manage-city.controller.js"></script>
 
 
-    <script src="home-state/home.route.js"></script>
-    <script src="home-state/home.controller.js"></script>
-    <script src="home-state/capitals.service.js"></script>
+  <script src="home-state/home.route.js"></script>
+  <script src="home-state/home.controller.js"></script>
+  <script src="home-state/capitals.service.js"></script>
 
 
-    <script src="about-state/about.route.js"></script>
-    <script src="about-state/about.controller.js"></script>
+  <script src="about-state/about.route.js"></script>
+  <script src="about-state/about.controller.js"></script>
 
-    <script src="home-state/data-models/Capital.js"></script>
-    <script src="home-state/data-models/CapitalsList.js"></script>
+  <script src="home-state/data-models/Capital.js"></script>
+  <script src="home-state/data-models/CapitalsList.js"></script>
+
+  <script src="layout/eco-header/eco-header.directive.js"></script>
+
+  <script src="layout/footer/footer.directive.js"></script>
 
 
 

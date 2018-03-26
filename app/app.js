@@ -8,9 +8,10 @@ angular
       'ui.bootstrap',
       'ngStorage'
 ])
-    .config(['$urlRouterProvider', '$locationProvider', '$sceDelegateProvider',
-        function($urlRouterProvider, $locationProvider, $sceDelegateProvider) {
-            $locationProvider.hashPrefix('!');
+    .config(['$urlRouterProvider', '$locationProvider', '$sceDelegateProvider', '$compileProvider',
+        function($urlRouterProvider, $locationProvider, $sceDelegateProvider, $compileProvider) {
+            $locationProvider.html5Mode(true);
+
 
             $sceDelegateProvider.resourceUrlWhitelist([   //White list for wether api
                 // Allow same origin resource loads.
