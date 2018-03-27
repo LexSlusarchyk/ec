@@ -11,10 +11,6 @@
         var vm = this;
 
 
-        vm.states = [];
-
-
-
     }
 })();
 

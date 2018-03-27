@@ -5,17 +5,21 @@
         .module('app')
         .controller('NewsController', NewsController);
 
-    NewsController.$inject = [];
+    NewsController.$inject = ['news'];
 
-    function NewsController() {
+    function NewsController(news) {
         var vm = this;
 
- //       vm.news = new ArticlesList();
+
 
         activate();
 
         function activate() {
- //           vm.news.getRemote();
+
+            news.getAll().then(function (data) {
+                vm.news = data.data;
+                console.log(vm.news);
+            });
         }
 
     }

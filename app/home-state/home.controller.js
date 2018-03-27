@@ -4,9 +4,9 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$rootScope', 'modalService', 'users'];
+    HomeController.$inject = ['$rootScope', 'modalService', 'users', 'news'];
 
-    function HomeController($rootScope, modalService, users) {
+    function HomeController($rootScope, modalService, users, news) {
         var vm = this;
 
 
@@ -15,18 +15,25 @@
 
         function activate() {
 
+            users.getAll().then(function (data) {
+                vm.users = data.data;
+                console.log(vm.users);
+            });
+
+            users.get(1).then(function (data) {
+                vm.user = data.data;
+                console.log(vm.user);
+            });
+
+            news.getAll().then(function (data) {
+                vm.news = data.data;
+                console.log(vm.news);
+            });
+
         }
 
 
-        users.getAll().then(function (data) {
-            vm.users = data.data;
-            console.log(vm.users);
-        });
 
-        users.get(1).then(function (data) {
-            vm.user = data.data;
-            console.log(vm.user);
-        });
 
     }
 })();

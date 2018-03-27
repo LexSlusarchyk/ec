@@ -5,15 +5,15 @@
         .module('app')
         .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
             $stateProvider
-                .state('news', {
-                    url:'/news',
-                    templateUrl: 'news-state/news.view.html',
-                    controller: 'NewsController',
+                .state('dashboard', {
+                    url:'/dashboard',
+                    templateUrl: 'dashboard-state/dashboard.view.html',
+                    controller: 'DashboardController',
                     controllerAs: 'vm',
                     permissions: {
                         only: 'abstractState'
                     },
-                    redirectTo: ['news.news-list']
+                    redirectTo: ['dashboard.news']
                 })
         }])
 })();

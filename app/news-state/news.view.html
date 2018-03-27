@@ -1,10 +1,16 @@
-<div>
+<div class="container-fluid news-state">
   <div class="row">
     <div class="col-md-9">
-      <h1>News</h1>
+      <h2>News</h2>
+      <div ng-repeat="article in vm.news track by $index">
+        <p>{{article.title}}</p>
+        <p>{{article.text}}</p>
+      </div>
+      <div data-ui-view></div>
     </div>
     <div class="col-md-3">
-
+      <div data-suggestions-list
+      ></div>
     </div>
   </div>
 </div>

@@ -6,3 +6,9 @@
 
 
 <h1>{{vm.user.name}}</h1>
+
+<h2>Last news</h2>
+<div ng-repeat="article in vm.news track by $index">
+    <p>{{article.title}}</p>
+    <p>{{article.text}}</p>
+</div>
