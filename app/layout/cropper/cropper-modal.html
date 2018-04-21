@@ -1,0 +1,44 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <h4 class="modal-title">Add photo</h4>
+</div>
+<div class="modal-body">
+  <div data-ng-show="vm.isCropperVisible()" class="img-container">
+    <img ng-src="{{vm.dataUrl}}"
+         ng-cropper
+         ng-cropper-proxy="vm.cropperProxy"
+         ng-cropper-show="vm.showEvent"
+         ng-cropper-hide="vm.hideEvent"
+         ng-cropper-options="vm.options">
+  </div>
+
+  <div data-preloader
+       data-ng-if="vm.isLoadInProcess"
+  ></div>
+
+  <button data-ng-hide="vm.preview.dataUrl"
+          class="btn btn-success show-preview"
+          data-ng-click="vm.getPreview()"
+          data-ng-disabled="vm.isLoadInProcess"
+  >Далі</button>
+
+  <div class="preview-container"
+       data-ng-if="vm.isPreviewVisible()"
+  >
+    <img data-ng-src="{{vm.preview.dataUrl}}">
+  </div>
+
+  <div data-ng-show="vm.isPreviewVisible()" class="photo-submit-container">
+    <button class="btn btn-success"
+            data-ng-click="vm.sendFile(vm.preview.dataUrl)"
+            data-ng-disabled="vm.isLoadInProcess"
+    >Зберегти</button>
+    <button class="btn btn-danger"
+            ng-click="vm.preview.dataUrl = null"
+    >Скасувати</button>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-sm btn-default" ng-click="$dismiss()">Закрити</button>
+</div>
