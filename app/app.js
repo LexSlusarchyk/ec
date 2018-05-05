@@ -6,12 +6,14 @@ angular
       'ui.router',
       'ui.router.state.events',
       'ui.bootstrap',
+        'ngCropper',
+        'summernote',
       'ngStorage'
     ])
 
     .config(['$urlRouterProvider', '$locationProvider',
         function($urlRouterProvider, $locationProvider) {
-        //    $locationProvider.html5Mode(true);
-            $urlRouterProvider.otherwise("/");
+ //           $locationProvider.html5Mode(true);
+           $urlRouterProvider.otherwise("home");
 
         }]);

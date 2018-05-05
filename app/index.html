@@ -14,7 +14,11 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="app.css">
+
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+  <link href="bower_components/ng-cropper/dist/ngCropper.all.css" rel="stylesheet">
   <link rel="stylesheet" href="content/css/style.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -45,10 +49,18 @@
   <script src="bower_components/angular-ui-router/release/stateEvents.min.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="bower_components/summernote/dist/summernote.min.js"></script>
+  <script src="bower_components/eventEmitter/EventEmitter.js"></script>
+
+  <script src="bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
+  <script src="bower_components/ng-cropper/dist/ngCropper.all.js"></script>
+
+  <script src="bower_components/chance/dist/chance.min.js"></script>
 
   <script src="core/base.controller.js"></script>
   <script src="core/users.service.js"></script>
   <script src="core/global.service.js"></script>
+  <script src="blocks/helper.js"></script>
 
 
   <script src="blocks/modals/modal.service.js"></script>
@@ -71,16 +83,27 @@
 
   <script src="layout/footer/footer.directive.js"></script>
 
+  <script src="layout/datetimepicker/datetimepicker.directive.js"></script>
+  <script src="layout/datetimepicker/DateTimePicker.js"></script>
+
 
   <script src="news-state/news.service.js"></script>
 
-  <script src="dashboard-state/dashboard.route.js"></script>
-  <script src="dashboard-state/dashboard.controller.js"></script>
+  <script src="Services/modalService.js"></script>
+  <script src="Services/confirmService.js"></script>
+  <script src="Services/newsService.js"></script>
 
-  <script src="dashboard-state/news/news.route.js"></script>
-  <script src="dashboard-state/news/news.controller.js"></script>
-  <script src="dashboard-state/news/manage-article/manage-article.route.js"></script>
-  <script src="dashboard-state/news/manage-article/manage-article.controller.js"></script>
+  <script src="dashboard/dashboard.route.js"></script>
+  <script src="dashboard/dashboard.controller.js"></script>
+
+  <script src="dashboard/news/news.route.js"></script>
+  <script src="dashboard/news/news.controller.js"></script>
+
+  <script src="dashboard/news/article-manage/create/create-article.route.js"></script>
+  <script src="dashboard/news/article-manage/create/create-article.controller.js"></script>
+
+  <script src="dashboard/news/article-manage/edit/edit-article.route.js"></script>
+  <script src="dashboard/news/article-manage/edit/edit-article.controller.js"></script>
 
   <script src="news-state/article-state/article.route.js"></script>
   <script src="news-state/article-state/article.controller.js"></script>
@@ -92,6 +115,15 @@
   <script src="news-state/data-models/ArticlesList.js"></script>
   <script src="news-state/news.service.js"></script>
   <script src="news-state/article-block/article-block.directive.js"></script>
+
+
+  <script src="layout/summer/summer.directive.js"></script>
+  <script src="layout/select-image/select-image.directive.js"></script>
+  <script src="layout/select-image/image-service.service.js"></script>
+
+
+  <script src="layout/cropper/cropper.service.js"></script>
+  <script src="layout/cropper/cropper.controller.js"></script>
 
 
   </body>

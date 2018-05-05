@@ -9,13 +9,14 @@
 	function DashboardController() {
 		var vm = this;
 
-		// vm.logOut = logOut;
-        //
-		// function logOut() {
-		// 	users.logout();
-		// }
-
 	}
 })();
+
+
+
+
+
+
+
 
 

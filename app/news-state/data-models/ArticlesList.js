@@ -8,7 +8,7 @@
     articlesList.$inject = ['news', 'Article'];
     /* @ngInject */
     function articlesList(news, Article) {
- //       _(ArticlesList.prototype).extend(EventEmitter.prototype);
+        _(ArticlesList.prototype).extend(EventEmitter.prototype);
 
         function ArticlesList(params) {
             this.data = [];

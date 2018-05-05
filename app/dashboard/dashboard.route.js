@@ -7,13 +7,10 @@
             $stateProvider
                 .state('dashboard', {
                     url:'/dashboard',
-                    templateUrl: 'dashboard-state/dashboard.view.html',
+                    templateUrl: 'dashboard/dashboard.html',
                     controller: 'DashboardController',
-                    controllerAs: 'vm',
-                    permissions: {
-                        only: 'abstractState'
-                    },
-                    redirectTo: ['dashboard.news']
+                    controllerAs: 'vm'
                 })
         }])
 })();
+

@@ -5,10 +5,10 @@
         .module('app')
         .factory('Article', article);
 
-    article.$inject = ['news'];
+    article.$inject = ['news', 'DateTimePicker', 'helper'];
     /* @ngInject */
-    function article(news) {
-        // _(Article.prototype).extend(EventEmitter.prototype);
+    function article(news, DateTimePicker, helper) {
+         _(Article.prototype).extend(EventEmitter.prototype);
 
         function Article(params) {
             this.id = null;
@@ -18,10 +18,10 @@
             this.text = '';
             this.imgUrl = null;
             this.text = '';
-            // this.createdAt = new DateTimePicker({
-            //     date: new Date(),
-            //     time: new Date()
-            // });
+            this.createdAt = new DateTimePicker({
+                date: new Date(),
+                time: new Date()
+            });
 
             this.init(params);
         }
@@ -36,12 +36,12 @@
             if (params.text) { this.text = params.text; }
             if (params.imgUrl) { this.imgUrl = params.imgUrl; }
             if (params.createdAt) {
-                // var dstTime = helper.applyDstOffset(params.createdAt);
-                //
-                // this.createdAt = new DateTimePicker({
-                //     date: new Date(dstTime),
-                //     time: new Date(dstTime)
-                // });
+                var dstTime = helper.applyDstOffset(params.createdAt);
+
+                this.createdAt = new DateTimePicker({
+                    date: new Date(dstTime),
+                    time: new Date(dstTime)
+                });
             }
         };
 

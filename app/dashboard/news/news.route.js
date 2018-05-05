@@ -7,12 +7,9 @@
             $stateProvider
                 .state('dashboard.news', {
                     url:'/news',
-                    templateUrl: 'dashboard-state/news/news.view.html',
+                    templateUrl: 'dashboard/news/news.html',
                     controller: 'DashboardNewsController',
-                    controllerAs: 'vm',
-                    permissions: {
-                        only: 'seeDashboard'
-                    }
+                    controllerAs: 'vm'
                 })
         }])
 })();
