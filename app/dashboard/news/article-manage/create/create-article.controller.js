@@ -24,7 +24,9 @@
 
         }
 
+        vm.categories = newsService.data;
 
+        console.log(newsService.data);
 
         function createArticle() {
 
@@ -34,6 +36,7 @@
 
             newsService.createArticle(vm.article).then(function(response) {
                 $state.go('dashboard.news');
+                console.log(vm.article);
             });
         }
 

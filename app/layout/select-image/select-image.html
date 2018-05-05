@@ -1,13 +1,13 @@
 <div class="select-image-container noselect" data-ng-class="{'invalid': vm.config.invalid}">
 	<div class="select-image-box"
 			 data-ng-class="{'image-editable': vm.editable}">
-		<img data-ng-if="vm.image.src"
-				 data-ng-src="{{vm.image.src}}"
+		<img data-ng-if="vm.image"
+				 data-ng-src="{{vm.image}}"
 				 data-preload-image
 				 data-default-image="content/images/preloader.gif"
 				 class="selectable-image"
 		>
-		<img data-ng-hide="vm.image.src"
+		<img data-ng-hide="vm.image"
 				 src="content/images/placeholder_cropped.jpg"
 				 class="image-placeholder">
 		<div class="select-image-overlay"

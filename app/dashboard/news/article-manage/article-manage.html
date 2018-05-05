@@ -5,10 +5,16 @@
         <select-image data-image="vm.article.imgUrl" data-editable="true"></select-image>
       </div>
       <div class="col-md-8">
-<!--    <infinite-select data-tree="vm.locations"
-                         data-selected-options-list="vm.selectedLocations"
-        ></infinite-select>
--->
+
+        <h1>Категорія: {{vm.categories[vm.article.catId].title}}</h1>
+        <h1>Змінити категорію</h1>
+        <select ng-model="vm.selectedCat">
+          <option selected disabled value="{{vm.article.catId}}">{{vm.categories[vm.article.catId].title}}</option>
+          <option ng-repeat="categori in vm.categories track by $index" value="{{categori.catId}}">{{categori.title}}</option>
+        </select>
+
+        <h1>{{vm.selectedCat}}</h1>
+
         <div class="input-group">
           <input type="text"
                  data-ng-model="vm.article.title"
@@ -24,7 +30,7 @@
         </div>
       </div>
     </div>
-    <summer text="vm.article.text"></summer>
+<summer text="vm.article.text"></summer>
   </form>
   <button data-ng-click="vm.manageArticle()"
           class="btn btn-success"

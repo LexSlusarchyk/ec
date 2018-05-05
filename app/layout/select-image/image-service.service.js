@@ -4,10 +4,10 @@
 		.factory('imageService', imageService);
 
 
-	imageService.$inject = ['$q', '$http', 'global', 'Cropper'];
+	imageService.$inject = ['$q', '$http', 'Cropper'];
 
-	function imageService($q, $http, global, Cropper) {
-		var apiUrl = global.apiUrl;
+	function imageService($q, $http, Cropper) {
+		
 
 		var ORIG_W = 2000;
 		var THUMB_W = 700;
@@ -126,18 +126,26 @@
 
 
 		function deployImageString(imgString, config) {
+			var defered = $q.defer();
 			var params = {
 				base64Image: imgString
 			};
 
 			console.log(config);
+			
 
 			if (config && config.instance && config.instanceId) {
 				params.instance = config.instance;
 				params.instanceId = config.instanceId;
 			}
 
-			return $http.post(apiUrl + '/image-upload', params);
+			
+			
+
+
+			return $http.post('api/saveImage.php', params);
+
+
 		}
 
 	}

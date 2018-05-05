@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular
-        .module('lnd')
+        .module('app')
         .controller('DashboardCategoriesController', DashboardCategoriesController);
 
     DashboardCategoriesController.$inject = ['categoriesService', 'modalService'];

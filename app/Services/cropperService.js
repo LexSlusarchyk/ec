@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module('lnd')
+		.module('app')
 		.factory('cropperService', cropperService);
 
 	cropperService.$inject = ['$http', '$q', '$uibModal', 'Cropper', 'mediaService'];

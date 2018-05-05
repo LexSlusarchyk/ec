@@ -53,7 +53,9 @@
                 })
                 .then(function(response){
                     if (!response) { return false; }
+
                     vm.image = response.data ? response.data : response;
+                    console.log(vm.image);
 
                     updateImageSrc(vm.image.src);
 

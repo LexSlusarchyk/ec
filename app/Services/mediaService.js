@@ -2,13 +2,13 @@
 	'use strict';
 
 	angular
-		.module('lnd')
+		.module('app')
 		.factory('mediaService', mediaService);
 
-	mediaService.$inject = ['$q', '$http', 'globalConfig'];
+	mediaService.$inject = ['$q', '$http'];
 
-	function mediaService($q, $http, globalConfig) {
-		var apiUrl = globalConfig.apiUrl;
+	function mediaService($q, $http) {
+
 		var service = {
 			uploadBase64Image: uploadBase64Image
 		}
@@ -21,7 +21,7 @@
 				imageString: base64Image
 			}
 
-			$http.post(apiUrl + '/api/media/base64image', reqBody).then(function(data){
+			$http.post('api/saveImage.php', reqBody).then(function(data){
 				defered.resolve(data)
 			})
 

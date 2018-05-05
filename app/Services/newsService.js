@@ -11,6 +11,7 @@
 
 
         var service = {
+            data: {},
             getNews: getNews,
             getLastNews: getLastNews,
             getArticle: getArticle,
@@ -19,15 +20,23 @@
             deleteArticle: deleteArticle
         };
 
+//Категорії
+        service.data = [
+        {catId:0, title: 'Лекс'},
+        {catId:1, title: 'Лекс2'},
+        {catId:2, title: 'Лекс3'}
+
+        ];
+
         return service;
 
         function getNews(catId) {
             var defered = $q.defer();
             var query;
             if (catId) {
-                query = '/api/news/category/' + catId;
+                query = 'api/news/category/' + catId;
             } else {
-                query = '/api/news';
+                query = 'api/news/getNews.php';
             }
 
             $http.get(query).then(function(data){
@@ -50,9 +59,9 @@
 
         function getArticle(id) {
             var defered = $q.defer();
-            var query = apiUrl + '/api/news/' + id;
+            var query = 'api/news/getArticle.php', id;
 
-            $http.get(query).then(function(data){
+            $http.post(query, id).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;
@@ -60,7 +69,7 @@
 
         function createArticle(article) {
             var defered = $q.defer();
-            var query = apiUrl + '/api/news';
+            var query = 'api/news/createArticle.php';
             $http.post(query, article).then(function(data){
                 defered.resolve(data);
             });
@@ -69,10 +78,9 @@
 
         function editArticle(article) {
             var defered = $q.defer();
-            var query = apiUrl + '/api/news/' + article.id;
-            var requestBody = globalConfig.filterFalseKeys(article);
+            var query = 'api/news/editArticle.php', id;
 
-            $http.put(query, requestBody).then(function(data){
+            $http.post(query, article).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;
@@ -81,9 +89,9 @@
 
         function deleteArticle(id) {
             var defered = $q.defer();
-            var query = apiUrl + '/api/news/' + id;
+            var query = 'api/news/deleteArticle.php', id;
 
-            $http.delete(query).then(function(data){
+            $http.post(query, id).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

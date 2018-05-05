@@ -5,27 +5,27 @@
         .module('app')
         .controller('ArticleController', ArticleController);
 
-    ArticleController.$inject = ['$scope', '$stateParams', 'Article', 'metaTags'];
+    ArticleController.$inject = ['$scope', '$stateParams', 'newsService'];
 
-    function ArticleController($scope, $stateParams, Article, metaTags) {
+    function ArticleController($scope, $stateParams, newsService) {
         var vm = this;
 
         var articleId = $stateParams.id;
 
-        vm.article = new Article({id: articleId});
+        
 
         activate();
 
         function activate() {
-            vm.article.getRemote().then(function() {
-                vm.options = { article: vm.article };
-                metaTags.setTitle(vm.article.title);
-                metaTags.setDescription(vm.article.snippet);
-            });
+            getArticle();
+        }
 
-            $scope.$on('$destroy', function() {
-                metaTags.reset();
-            });
+        function getArticle() {
+            newsService.getArticle(articleId).then(function(response) {
+                console.log(articleId);
+                vm.article = response.data;
+                console.log(response);
+            })
         }
 
     }

@@ -14,7 +14,7 @@
             controller: SummerController,
             controllerAs: 'vm',
             restrict: 'E',
-            templateUrl: '/layout/summer/summer.html',
+            templateUrl: 'layout/summer/summer.html',
             scope: {
                 text: '='
             }
@@ -57,7 +57,7 @@
             var reader  = new FileReader();
             reader.onloadend = function () {
                 imageService.deployImageString(reader.result).then(function(data) {
-                    $('#summernote').summernote('insertImage', data.data.src);
+                    $('#summernote').summernote('insertImage', data.data);
                 });
             };
             reader.readAsDataURL(file[0]);

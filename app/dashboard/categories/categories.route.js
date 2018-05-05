@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('lnd')
+        .module('app')
         .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
             $stateProvider
                 .state('dashboard.categories', {
